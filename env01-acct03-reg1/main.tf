@@ -1,0 +1,23 @@
+terraform {
+  required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+resource "null_resource" "reg1" {
+  provisioner "local-exec" {
+    command = "echo Module: env01-acct03-reg1"
+  }
+}
+
+variable "parent_ready" {
+  type    = bool
+  default = true
+}
+
+output "ready" {
+  value = var.parent_ready
+}
